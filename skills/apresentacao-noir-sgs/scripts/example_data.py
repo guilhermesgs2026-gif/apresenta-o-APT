@@ -2,10 +2,16 @@
 precisa expor D (lista de regionais), PER, TI_, TD, TA, TF, TIT, IDX, dates, dvals, cons, att."""
 import json,os
 from nl import num,pdate
-D=json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","assets","example_data.json"),encoding="utf-8"))
+_here=os.path.dirname(os.path.abspath(__file__))
+_dp=os.path.join(_here,"..","data.json")
+if not os.path.exists(_dp): _dp=os.path.join(_here,"..","assets","example_data.json")
+D=json.load(open(_dp,encoding="utf-8"))
 for r in D:
     if r["name"].startswith("Linhas"): r["name"]="Linhas de Transmissão"
-PER="28/09/2026 a 04/10/2026"
+_meta_path=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","meta.json")
+if not os.path.exists(_meta_path): _meta_path=os.path.join(os.path.dirname(os.path.abspath(__file__)),"..","assets","example_meta.json")
+META=json.load(open(_meta_path,encoding="utf-8"))
+PER=META["period"]; NREG=len(D)
 for r in D:
     r["ins"]=int(num(r["kpi"]["INSPEÇÕES"])); r["dev"]=int(num(r["dkpi"]["TOTAL DE DESVIOS"]))
     r["idx"]=100*r["dev"]/r["ins"]; r["itens"]=int(num(r["kpi"]["ITENS VERIFICADOS"]))
@@ -13,7 +19,9 @@ for r in D:
     r["aberto"]=cl.get("Aberto",0); r["fechado"]=cl.get("Fechado",0)
 TI_=sum(r["ins"] for r in D); TD=sum(r["dev"] for r in D); TIT=sum(r["itens"] for r in D)
 TA=sum(r["aberto"] for r in D); TF=sum(r["fechado"] for r in D)
-assert TI_==537 and TD==45 and TA+TF==45
+TCRIT=sum(int(num(r["dkpi"]["CRÍTICOS (RAC)"])) for r in D)
+if (TI_,TD)!=(META.get("inspecoes"),META.get("desvios")) or TA+TF!=TD:
+    print("AVISO: totais calculados (%s inspeções, %s desvios) diferem da capa da fonte (%s, %s) - conferir os dados"%(TI_,TD,META.get("inspecoes"),META.get("desvios")))
 IDX=100*TD/TI_
 daily={}
 for r in D:

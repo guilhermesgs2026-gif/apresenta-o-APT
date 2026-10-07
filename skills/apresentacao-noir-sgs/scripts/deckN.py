@@ -1,7 +1,7 @@
 import sys,os
 from nl import *
 import example_data as A
-D=A.D; PER=A.PER; TI_=A.TI_; TDEV=A.TD; TA=A.TA; TF=A.TF; TIT=A.TIT; IDX=A.IDX; dates=A.dates; dvals=A.dvals; cons=A.cons; att=A.att
+D=A.D; PER=A.PER; TI_=A.TI_; TDEV=A.TD; TCRIT=A.TCRIT; NREG=A.NREG; TA=A.TA; TF=A.TF; TIT=A.TIT; IDX=A.IDX; dates=A.dates; dvals=A.dvals; cons=A.cons; att=A.att
 def pct0(a,b): return round(100*a/b)
 def sort_desc(cats,vals):
     pairs=list(zip(cats,vals)); out=[p for p in pairs if p[0]!="Outras"]; out.sort(key=lambda p:-p[1]); out+=[p for p in pairs if p[0]=="Outras"]
@@ -40,7 +40,7 @@ def cover(deck,total):
     else:
         ov="Semanal de qualidade"; sub="Gestão de Inspeções e Desvios · todas as regionais do período"
     it.append(title_block("cover-title",170,470,320,"RELATÓRIO",140,ov,sub))
-    cols=[("PERÍODO","28/09/2026 a 04/10/2026"),("REGIONAIS","06"),("INSPEÇÕES CONCLUÍDAS","537"),("DESVIOS REGISTRADOS","45")]
+    cols=[("PERÍODO",PER),("REGIONAIS",f"{A.META['n_regionais']:02d}"),("INSPEÇÕES CONCLUÍDAS",str(A.META["inspecoes"])),("DESVIOS REGISTRADOS",str(A.META["desvios"]))]
     xs=[M,440,640,920]
     for i,(l,v) in enumerate(cols):
         x=xs[i]
@@ -116,19 +116,20 @@ def b_matriz(r,pn,total):
     return svg_page(it)
 
 def build_B(out):
-    os.makedirs(out,exist_ok=True); total=32; n=0; roster=[]
+    os.makedirs(out,exist_ok=True); total=5*len(D)+2; n=0; roster=[]
     def put(name,svg,title):
         nonlocal n; n+=1; fn=f"{n:02d}_{name}.svg"; open(os.path.join(out,fn),"w",encoding="utf-8").write(svg); roster.append((n,fn,title))
     put("capa",cover("B",total),"Capa")
-    keys=["trafo","breaker","insul","tower","trafo","breaker"]
+    _keys=["trafo","breaker","insul","tower","trafo","breaker"]
     for k,r in enumerate(D):
+        key_img="tower" if "transmiss" in r["name"].lower() else _keys[k%len(_keys)]
         base=n
-        put(f"r{k+1}_divisor",divider(k+1,6,r["name"],"Gestão de Inspeções · Qualidade",PER,n+1,total,keys[k]),f"Regional {r['name']}")
+        put(f"r{k+1}_divisor",divider(k+1,len(D),r["name"],"Gestão de Inspeções · Qualidade",PER,n+1,total,key_img),f"Regional {r['name']}")
         put(f"r{k+1}_panorama",b_panorama(r,n+1,total),f"Panorama do período — {r['name']}")
         put(f"r{k+1}_projetos",b_projetos(r,n+1,total),f"Projetos acompanhados — {r['name']}")
         put(f"r{k+1}_desvios",b_desvios(r,n+1,total),f"Desvios — visão geral — {r['name']}")
         put(f"r{k+1}_matriz",b_matriz(r,n+1,total),f"Matriz de risco das contratadas — {r['name']}")
-    put("obrigado",closing("OBRIGADO",["RELATÓRIO SEMANAL DE QUALIDADE  —  SGS ENGER ENGENHARIA · ISA ENERGIA BRASIL","6 REGIONAIS  ·  537 INSPEÇÕES  ·  45 DESVIOS  ·  28/09/2026 A 04/10/2026","GERADO AUTOMATICAMENTE EM 06/10/2026 ÀS 10:37"],n+1,total),"Obrigado")
+    put("obrigado",closing("OBRIGADO",["RELATÓRIO SEMANAL DE QUALIDADE  —  SGS ENGER ENGENHARIA · ISA ENERGIA BRASIL",f"{A.META['n_regionais']} REGIONAIS  ·  {A.META['inspecoes']} INSPEÇÕES  ·  {A.META['desvios']} DESVIOS  ·  {PER.upper()}",f"GERADO AUTOMATICAMENTE EM {A.META['gen_date']} ÀS {A.META['gen_time']}"],n+1,total),"Obrigado")
     return roster
 
 # ---------- deck A (consolidated) ----------
@@ -140,9 +141,9 @@ def atitle(title_lines,kicker=None):
     return G("header",(M,84,W-2*M,44+46*len(title_lines)),b)
 
 def a_resumo(pn,total):
-    it=achrome(pn,total,"Resumo executivo"); it.append(atitle(["537 inspeções, 45 desvios e nenhum crítico:","o risco se concentra em poucas contratadas"],"Resumo executivo"))
+    it=achrome(pn,total,"Resumo executivo"); it.append(atitle([f"{TI_} inspeções, {TDEV} desvios e "+("nenhum crítico:" if TCRIT==0 else f"{TCRIT} críticos:"),"o risco se concentra em poucas contratadas"],"Resumo executivo"))
     cw=(W-2*M-3*24)/4
-    vals=[("INSPEÇÕES CONCLUÍDAS",fmt(TI_),f"{fmt(TIT)} itens verificados",True),("DESVIOS REGISTRADOS",str(TDEV),f"{pct(IDX)} desvios por inspeção",False),("DESVIOS CRÍTICOS (RAC)","0","nenhum no período",False),("DESVIOS EM ABERTO",str(TA),f"{pct0(TA,TDEV)}% do total · {TF} fechados",False)]
+    vals=[("INSPEÇÕES CONCLUÍDAS",fmt(TI_),f"{fmt(TIT)} itens verificados",True),("DESVIOS REGISTRADOS",str(TDEV),f"{pct(IDX)} desvios por inspeção",False),("DESVIOS CRÍTICOS (RAC)",str(TCRIT),"nenhum no período" if TCRIT==0 else "exigem ação imediata",False),("DESVIOS EM ABERTO",str(TA),f"{pct0(TA,TDEV)}% do total · {TF} fechados",False)]
     for i,(l,v,s,hl) in enumerate(vals): it.append(kpi(f"kpi-{i+1}",M+i*(cw+24),232,cw,l,v,s,hl))
     top=max(D,key=lambda r:r["dev"]); hi=max(D,key=lambda r:r["idx"]); lead=max(D,key=lambda r:r["ins"])
     pts=[("Volume",f"{lead['name']} lidera o volume de inspeções",f"{pct0(lead['ins'],TI_)}%",f"{lead['ins']} de {TI_} inspeções",C["txt"]),
@@ -159,24 +160,24 @@ def a_resumo(pn,total):
 
 def a_regionais(pn,total):
     s=sorted(D,key=lambda r:-r["ins"]); a,b2=s[0],s[1]
-    it=achrome(pn,total,"Volume por regional"); it.append(atitle([f"{a['name']} e {b2['name']} respondem por {pct0(a['ins']+b2['ins'],TI_)}%","das 537 inspeções da semana"],"Panorama consolidado"))
-    b=section_label(M,226,720,"Inspeções por regional","Semana 28/09 a 04/10")+lollipop(M,258,720,380,[r["name"] for r in s],[r["ins"] for r in s],lw=200,fs=18)
+    it=achrome(pn,total,"Volume por regional"); it.append(atitle([f"{a['name']} e {b2['name']} respondem por {pct0(a['ins']+b2['ins'],TI_)}%",f"das {TI_} inspeções da semana"],"Panorama consolidado"))
+    b=section_label(M,226,720,"Inspeções por regional","Semana "+A.META["period_short"])+lollipop(M,258,720,380,[r["name"] for r in s],[r["ins"] for r in s],lw=200,fs=18)
     it.append(G("chart-regionais",(M,226,720,420),b))
     x2=M+720+60; w2=W-M-x2; big=max(D,key=lambda r:r["itens"])
-    it.append(kpi("kpi-itens",x2,226,w2,"ITENS VERIFICADOS",fmt(TIT),"soma dos checklists · 6 regionais",False,vs=64,h=150))
+    it.append(kpi("kpi-itens",x2,226,w2,"ITENS VERIFICADOS",fmt(TIT),f"soma dos checklists · {NREG} regionais",False,vs=64,h=150))
     it.append(kpi("kpi-sp",x2,420,w2,"MAIOR VOLUME DE ITENS",fmt(big["itens"]),f"{big['name']} · {pct0(big['itens'],TIT)}% do total",True,vs=64,h=150))
     return svg_page(it)
 
 def a_ritmo(pn,total):
     wk=[v for d,v in zip(dates,dvals) if pdate(d).weekday()<5]
     it=achrome(pn,total,"Ritmo diário"); it.append(atitle([f"Ritmo estável de {min(wk)} a {max(wk)} inspeções por dia útil,","com queda esperada no fim de semana"],"Ritmo operacional"))
-    b=section_label(M,226,W-2*M,"Inspeções por dia · todas as regionais","Total da semana: 537")+linechart(M+10,260,W-2*M-20,380,dates,dvals,fs=16)
+    b=section_label(M,226,W-2*M,"Inspeções por dia · todas as regionais",f"Total da semana: {TI_}")+linechart(M+10,260,W-2*M-20,380,dates,dvals,fs=16)
     it.append(G("chart-daily",(M,226,W-2*M,420),b)); return svg_page(it)
 
 def a_desvios(pn,total):
     s=sorted(D,key=lambda r:-r["dev"]); hi=max(D,key=lambda r:r["idx"])
     it=achrome(pn,total,"Desvios"); it.append(atitle([f"{s[0]['name']} concentra {s[0]['dev']} dos {TDEV} desvios;",f"{hi['name']} tem o maior índice ({pct(hi['idx'],0)})"],"Qualidade"))
-    b=section_label(M,226,640,"Desvios por regional","Total: 45 · críticos (RAC): 0")+lollipop(M,258,640,380,[r["name"] for r in s],[r["dev"] for r in s],lw=200,fs=18,col=C["txt"])
+    b=section_label(M,226,640,"Desvios por regional",f"Total: {TDEV} · críticos (RAC): {TCRIT}")+lollipop(M,258,640,380,[r["name"] for r in s],[r["dev"] for r in s],lw=200,fs=18,col=C["txt"])
     it.append(G("chart-desvios",(M,226,640,420),b))
     x2=M+640+60; w2=W-M-x2; rows=sorted(D,key=lambda r:-r["idx"]); rh=380/6
     b=section_label(x2,226,w2,"Índice desvios por inspeção")
@@ -187,7 +188,7 @@ def a_desvios(pn,total):
 
 def a_status(pn,total):
     s=sorted(D,key=lambda r:-r["dev"])
-    it=achrome(pn,total,"Tratamento de desvios"); it.append(atitle([f"{TA} dos {TDEV} desvios seguem abertos ({pct0(TA,TDEV)}%)","e nenhum é crítico"],"Tratamento de desvios"))
+    it=achrome(pn,total,"Tratamento de desvios"); it.append(atitle([f"{TA} dos {TDEV} desvios seguem abertos ({pct0(TA,TDEV)}%)",("e nenhum é crítico" if TCRIT==0 else f"e {TCRIT} são críticos")],"Tratamento de desvios"))
     b=section_label(M,226,440,"Status geral"); cx,cy=M+220,226+215; b+=donut(cx,cy,120,[("A",TA,C["orange"]),("F",TF,C["txt"])],sw=10)
     b+=[TD(cx,cy+24,str(TDEV),64,None,"middle"),TM(cx,cy+52,"DESVIOS",12,C["txt2"],"middle"),DOT(M+110,226+400,5,C["orange"]),T(M+124,226+406,f"Aberto {TA}",16,C["txt"]),DOT(M+260,226+400,5,C["txt"]),T(M+274,226+406,f"Fechado {TF}",16,C["txt"])]
     it.append(G("donut-status",(M,226,440,420),b))
@@ -204,7 +205,7 @@ def a_status(pn,total):
 
 def a_matriz(pn,total):
     rows=sorted([c for c in cons.values() if c["dev"]>0],key=lambda c:-c["idx"])
-    it=achrome(pn,total,"Risco"); it.append(atitle([f"Matriz consolidada: {len(rows)} contratadas com desvio,","ÁREA 19 e TECCEN lideram o índice"],"Risco"))
+    it=achrome(pn,total,"Risco"); it.append(atitle([f"Matriz consolidada: {len(rows)} contratadas com desvio,",(f"{rows[0]['nm']} e {rows[1]['nm']} lideram o índice" if len(rows)>1 else f"{rows[0]['nm']} lidera o índice")],"Risco"))
     rr=[[c["nm"],str(len(c["reg"])),str(c["ins"]),fmt(c["itens"]),str(c["dev"]),str(c["crit"]),pct(c["idx"])] for c in rows[:12]]
     b=section_label(M,226,W-2*M,"Índice de desvios por inspeção · todas as regionais")+table(M,258,W-2*M,360,["CONTRATADA","REGIONAIS","INSPEÇÕES","ITENS","DESVIOS","CRÍTICOS","DESV/INSP"],rr,[3.2,1,1.1,1,1,1,1.4],idx_col=6,fs=15)
     it.append(G("matriz",(M,226,W-2*M,396),b))
@@ -257,7 +258,7 @@ def a_foco(pn,total):
     it=achrome(pn,total,"Foco da próxima semana"); it.append(atitle(["Três frentes para manter zero crítico","e reduzir o índice de desvios"],"Foco da próxima semana"))
     items=[("01","Contratadas acima de 30%","; ".join(f"{a['nm']} ({a['reg']}, {a['idxs']})" for a in att)+". Plano de ação e reinspeção dirigida.",C["red"]),
            ("02","Fechar os desvios abertos",f"{TA} desvios em aberto, concentrados em "+", ".join(f"{r['name']} ({r['aberto']})" for r in sorted(D,key=lambda r:-r["aberto"])[:2])+". Acompanhar prazo de tratamento.",C["orange"]),
-           ("03","Padronizar o cadastro",f"{cons['NÃO INFORMADO']['ins']} inspeções sem contratada informada ({pct0(cons['NÃO INFORMADO']['ins'],TI_)}% do total). Tornar o campo obrigatório no registro.",C["txt"])]
+           (("03","Padronizar o cadastro",f"{cons['NÃO INFORMADO']['ins']} inspeções sem contratada informada ({pct0(cons['NÃO INFORMADO']['ins'],TI_)}% do total). Tornar o campo obrigatório no registro.",C["txt"]) if "NÃO INFORMADO" in cons else ("03","Manter a cobertura",f"{TI_} inspeções em {NREG} regionais. Manter o ritmo de inspeção e a qualidade do cadastro.",C["txt"]))]
     cw=(W-2*M-2*40)/3
     for i,(n,t,s,col) in enumerate(items):
         x=M+i*(cw+40); y=232
@@ -266,15 +267,15 @@ def a_foco(pn,total):
     return svg_page(it)
 
 def build_A(out):
-    os.makedirs(out,exist_ok=True); total=16; n=0; roster=[]
+    os.makedirs(out,exist_ok=True); total=10+len(D); n=0; roster=[]
     def put(name,svg,title):
         nonlocal n; n+=1; fn=f"{n:02d}_{name}.svg"; open(os.path.join(out,fn),"w",encoding="utf-8").write(svg); roster.append((n,fn,title))
     put("capa",cover("A",total),"Capa")
     put("resumo",a_resumo(2,total),"Resumo executivo"); put("regionais",a_regionais(3,total),"Volume por regional"); put("ritmo",a_ritmo(4,total),"Ritmo diário")
     put("desvios",a_desvios(5,total),"Desvios por regional"); put("status",a_status(6,total),"Status dos desvios"); put("matriz",a_matriz(7,total),"Matriz de risco consolidada"); put("atencao",a_atencao(8,total),"Contratadas em atenção")
     for i,r in enumerate(D): put(f"reg{i+1}",a_regional(r,9+i,total),f"Regional {r['name']}")
-    put("foco",a_foco(15,total),"Foco da próxima semana")
-    put("obrigado",closing("OBRIGADO",["FISCALIZAÇÃO DE OBRAS ELÉTRICAS  —  SGS ENGER ENGENHARIA · ISA ENERGIA BRASIL","6 REGIONAIS  ·  537 INSPEÇÕES  ·  45 DESVIOS  ·  28/09/2026 A 04/10/2026","GERADO AUTOMATICAMENTE EM 06/10/2026 ÀS 10:37"],16,total),"Obrigado")
+    put("foco",a_foco(9+len(D),total),"Foco da próxima semana")
+    put("obrigado",closing("OBRIGADO",["FISCALIZAÇÃO DE OBRAS ELÉTRICAS  —  SGS ENGER ENGENHARIA · ISA ENERGIA BRASIL",f"{A.META['n_regionais']} REGIONAIS  ·  {A.META['inspecoes']} INSPEÇÕES  ·  {A.META['desvios']} DESVIOS  ·  {PER.upper()}",f"GERADO AUTOMATICAMENTE EM {A.META['gen_date']} ÀS {A.META['gen_time']}"],10+len(D),total),"Obrigado")
     return roster
 
 if __name__=="__main__":

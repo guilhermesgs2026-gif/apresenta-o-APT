@@ -1,11 +1,16 @@
 import json,re
 raw=json.load(open("data_raw.json",encoding="utf-8"))
 def num(s): return int(re.sub(r"\D","",s))
+FIX={"Cabreuva":"Cabreúva","Taubate":"Taubaté","Sao Paulo":"São Paulo","Linhas De Transmissao":"Linhas de Transmissão","Linhas de Transmissao":"Linhas de Transmissão"}
+def smart_title(s):
+    t=" ".join(w.lower() if w.lower() in ("de","da","do","dos","das","e") else w.capitalize() for w in s.title().split())
+    return FIX.get(t,t)
 regs=[]
-for k in range(6):
+NREG=(len(raw)-2)//5
+for k in range(NREG):
     b=1+k*5
     div,pan,proj,dev,mat=raw[b:b+5]
-    name=div["texts"][0].replace("REGIONAL ","").title().replace("Cabreuva","Cabreúva").replace("São Paulo","São Paulo").replace("Taubaté","Taubaté")
+    name=smart_title(div["texts"][0].replace("REGIONAL ",""))
     t=pan["texts"]
     def after(lst,label): return lst[lst.index(label)-0+1] if False else None
     # KPI order: label,value,sub repeated
@@ -25,3 +30,13 @@ for r in regs:
     i=num(r["kpi"]["INSPEÇÕES"]); dd=num(r["dkpi"]["TOTAL DE DESVIOS"]); ti+=i; td+=dd
     print(r["name"],r["kpi"],r["dkpi"], sum(r["daily"]["vals"]),sum(r["part"]["vals"]),sum(r["proj"]["vals"]),sum(r["classif"]["vals"]),sum(r["ddaily"]["vals"]), r["daily"]["cats"][0],r["daily"]["cats"][-1])
 print(ti,td)
+
+# meta.json (período, geração, números da capa) lido do primeiro slide e do último
+cov=raw[0]["texts"]; end=raw[-1]["texts"]
+import re as _re
+gen=_re.search(r"gerado em (\d\d/\d\d/\d{4}) às (\d\d:\d\d)"," ".join(cov+end))
+period=cov[2]; short=_re.sub(r"/20\d\d","",period)
+meta=dict(period=period,period_short=short,gen_date=gen.group(1) if gen else "",gen_time=gen.group(2) if gen else "",
+          n_regionais=int(cov[3]),inspecoes=int(cov[5].replace(".","")),desvios=int(cov[7].replace(".","")),contratadas=int(cov[9].replace(".","")))
+json.dump(meta,open("meta.json","w",encoding="utf-8"),ensure_ascii=False,indent=1)
+print("meta:",meta)

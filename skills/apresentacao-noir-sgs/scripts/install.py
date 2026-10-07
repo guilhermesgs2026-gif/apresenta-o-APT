@@ -7,8 +7,8 @@ HERE=os.path.dirname(os.path.abspath(__file__)); ROOT=os.path.dirname(HERE)
 if which=="A":
     import deckN as d; out=os.path.join(ROOT,"out_NA"); roster=d.build_A(out)
     name="Fiscalização de Obras Elétricas - Relatório Consolidado"
-    core="537 inspeções, 45 desvios e zero críticos; o risco se concentra em poucas contratadas e regionais."
-    intent="Resumir a semana de fiscalização das 6 regionais, expor onde está o risco e orientar o foco da próxima semana."
+    core=f"{d.TI_} inspeções, {d.TDEV} desvios e {d.TCRIT} críticos; o risco se concentra em poucas contratadas e regionais."
+    intent=f"Resumir a semana de fiscalização das {d.NREG} regionais, expor onde está o risco e orientar o foco da próxima semana."
     outcome="A gestão identifica em minutos as contratadas e regionais que exigem ação."
     afterlife="Enviado por e-mail como pré-leitura e arquivado no relatório semanal."
     deliv="Reunião semanal de gestão (tela) e leitura offline em PPTX"
@@ -21,7 +21,7 @@ if which=="A":
 else:
     import deckN as d; out=os.path.join(ROOT,"out_NB"); roster=d.build_B(out)
     name="Relatório Semanal de Qualidade - Modelo Original"
-    core="Mesma estrutura do painel SGI (32 páginas, 6 regionais × 5 páginas) com visual de alto nível."
+    core=f"Mesma estrutura do painel SGI ({len(roster)} páginas, {d.NREG} regionais × 5 páginas) com visual de alto nível."
     intent="Entregar o relatório semanal no formato original do painel SGI, com texto e ordem preservados."
     outcome="Quem já conhece o relatório encontra cada dado no mesmo lugar, agora com leitura muito mais rápida."
     afterlife="Substitui o PPTX gerado automaticamente pelo painel; reutilizado semana a semana."

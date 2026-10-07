@@ -29,7 +29,7 @@ Dados de exemplo em `assets/example_data.json` estão **anonimizados** (versão 
 
 ## 2. Fluxo (executar em ordem)
 1. `python ~/.claude/skills/apresentacao-noir-sgs/scripts/setup_workdir.py <pasta>` cria `<pasta>/gen`, `assets`, `images` (copia scripts, fontes, objetos 3D, logo, dados de exemplo).
-2. Dados novos: `python gen/parse.py` (ajustar caminho do PPTX) e `python gen/build_data.py`; trocar `gen/example_data.py` se a estrutura mudar (precisa expor `D, PER, TI_, TD, TA, TF, TIT, IDX, dates, dvals, cons, att`).
+2. Dados novos: copiar o PPTX do painel para a pasta de trabalho como `fonte.pptx`, rodar `python gen/parse.py` e `python gen/build_data.py` (gera `data.json` e `meta.json`: período, data de geração e números da capa). Tudo no gerador é calculado desses arquivos (nº de regionais, totais, páginas, títulos, nomes líderes); nada fica fixo no código. Conferir o aviso de totais que `example_data.py` imprime se a soma não bater com a capa da fonte. Trocar `gen/example_data.py` só se a estrutura do painel mudar (precisa expor `D, PER, TI_, TD, TA, TF, TIT, IDX, dates, dvals, cons, att`).
 3. **Objetos 3D (só se precisar de novos)** — ver seção 4. Os 5 prontos já estão em `assets/` (torre, transformador, disjuntor, cadeia de isoladores, capacete) com camada `_fx`.
 4. Gerar SVGs: `cd gen && python deckN.py A ../out_NA` (consolidado) e `python deckN.py B ../out_NB` (original). Prévia fiel com fontes: `python shot2.py ../out_NA ../shots_NA 01 02 ...` e abrir os PNG (Read). Sempre olhar capa, 1 divisor, 1 slide de dados, matriz, fechamento.
 5. Projetos ppt-master (um por deck): `python ~/.claude/skills/ppt-master/scripts/project_manager.py init <nome>` (cria em `~/.claude/projects/<nome>_<data>`).
