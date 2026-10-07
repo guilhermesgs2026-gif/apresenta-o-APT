@@ -1,0 +1,1076 @@
+[
+ {
+  "name": "Cabreúva",
+  "kpi": {
+   "INSPEÇÕES": "151",
+   "INSPETORES": "16",
+   "CONTRATADAS": "10",
+   "PROJETOS": "12",
+   "ITENS VERIFICADOS": "3.800"
+  },
+  "part": {
+   "type": "DOUGHNUT (-4120)",
+   "cats": [
+    "CONTRATADA 01",
+    "CONTRATADA 02",
+    "NÃO INFORMADO",
+    "CONTRATADA 03",
+    "CONTRATADA 04",
+    "CONTRATADA 05",
+    "CONTRATADA 06",
+    "CONTRATADA 07",
+    "Outras"
+   ],
+   "vals": [
+    54.0,
+    35.0,
+    25.0,
+    11.0,
+    10.0,
+    6.0,
+    5.0,
+    3.0,
+    2.0
+   ]
+  },
+  "daily": {
+   "type": "AREA (1)",
+   "cats": [
+    "28/09",
+    "29/09",
+    "30/09",
+    "01/10",
+    "02/10",
+    "03/10",
+    "04/10"
+   ],
+   "vals": [
+    28.0,
+    30.0,
+    27.0,
+    21.0,
+    32.0,
+    6.0,
+    7.0
+   ]
+  },
+  "proj": {
+   "type": "BAR_CLUSTERED (57)",
+   "cats": [
+    "SE EXEMPLO 01",
+    "SE EXEMPLO 02",
+    "SE EXEMPLO 03",
+    "SE EXEMPLO 04",
+    "SE EXEMPLO 05",
+    "SE EXEMPLO 06",
+    "SE EXEMPLO 07",
+    "SE EXEMPLO 08",
+    "SE EXEMPLO 09",
+    "SE EXEMPLO 10",
+    "SE EXEMPLO 11",
+    "SE EXEMPLO 12"
+   ],
+   "vals": [
+    1.0,
+    4.0,
+    7.0,
+    10.0,
+    11.0,
+    12.0,
+    13.0,
+    15.0,
+    17.0,
+    19.0,
+    21.0,
+    21.0
+   ]
+  },
+  "dkpi": {
+   "TOTAL DE DESVIOS": "19",
+   "CRÍTICOS (RAC)": "0",
+   "ÍNDICE DESV/INSP": "13%",
+   "CONTRATADAS": "4",
+   "PROJETOS": "7"
+  },
+  "classif": {
+   "type": "DOUGHNUT (-4120)",
+   "cats": [
+    "Aberto",
+    "Fechado"
+   ],
+   "vals": [
+    10.0,
+    9.0
+   ]
+  },
+  "ddaily": {
+   "type": "AREA (1)",
+   "cats": [
+    "28/09",
+    "29/09",
+    "30/09",
+    "01/10",
+    "02/10",
+    "03/10"
+   ],
+   "vals": [
+    1.0,
+    2.0,
+    7.0,
+    3.0,
+    5.0,
+    1.0
+   ]
+  },
+  "matriz": [
+   [
+    "CONTRATADA",
+    "PROJETOS",
+    "INSPEÇÕES",
+    "ITENS",
+    "DESVIOS",
+    "CRÍTICOS",
+    "DESV/INSP"
+   ],
+   [
+    "CONTRATADA 04",
+    "2",
+    "10",
+    "416",
+    "5",
+    "0",
+    "50%"
+   ],
+   [
+    "NÃO INFORMADO",
+    "7",
+    "25",
+    "819",
+    "6",
+    "0",
+    "24%"
+   ],
+   [
+    "CONTRATADA 01",
+    "6",
+    "54",
+    "1.389",
+    "6",
+    "0",
+    "11%"
+   ],
+   [
+    "CONTRATADA 02",
+    "4",
+    "35",
+    "708",
+    "2",
+    "0",
+    "5,7%"
+   ],
+   [
+    "CONTRATADA 05",
+    "2",
+    "6",
+    "120",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 03",
+    "1",
+    "11",
+    "94",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 06",
+    "1",
+    "5",
+    "152",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 07",
+    "1",
+    "3",
+    "48",
+    "0",
+    "0",
+    "0,0%"
+   ]
+  ],
+  "slides": [
+   2,
+   3,
+   4,
+   5,
+   6
+  ]
+ },
+ {
+  "name": "São Paulo",
+  "kpi": {
+   "INSPEÇÕES": "134",
+   "INSPETORES": "15",
+   "CONTRATADAS": "14",
+   "PROJETOS": "15",
+   "ITENS VERIFICADOS": "8.946"
+  },
+  "part": {
+   "type": "DOUGHNUT (-4120)",
+   "cats": [
+    "CONTRATADA 08",
+    "CONTRATADA 09",
+    "CONTRATADA 10",
+    "CONTRATADA 11",
+    "CONTRATADA 12",
+    "CONTRATADA 13",
+    "NÃO INFORMADO",
+    "CONTRATADA 03",
+    "Outras"
+   ],
+   "vals": [
+    47.0,
+    27.0,
+    15.0,
+    10.0,
+    8.0,
+    5.0,
+    5.0,
+    5.0,
+    12.0
+   ]
+  },
+  "daily": {
+   "type": "AREA (1)",
+   "cats": [
+    "28/09",
+    "29/09",
+    "30/09",
+    "01/10",
+    "02/10",
+    "03/10"
+   ],
+   "vals": [
+    24.0,
+    29.0,
+    25.0,
+    25.0,
+    21.0,
+    10.0
+   ]
+  },
+  "proj": {
+   "type": "BAR_CLUSTERED (57)",
+   "cats": [
+    "SE EXEMPLO 13",
+    "SE EXEMPLO 14",
+    "SE EXEMPLO 15",
+    "SE EXEMPLO 16",
+    "SE EXEMPLO 17",
+    "SE EXEMPLO 18",
+    "SE EXEMPLO 19",
+    "SE EXEMPLO 20",
+    "SE EXEMPLO 21",
+    "SE EXEMPLO 22",
+    "SE EXEMPLO 23",
+    "SE EXEMPLO 24",
+    "SE EXEMPLO 25",
+    "SE EXEMPLO 26",
+    "SE EXEMPLO 27"
+   ],
+   "vals": [
+    1.0,
+    1.0,
+    2.0,
+    2.0,
+    3.0,
+    4.0,
+    4.0,
+    6.0,
+    9.0,
+    10.0,
+    12.0,
+    16.0,
+    16.0,
+    22.0,
+    26.0
+   ]
+  },
+  "dkpi": {
+   "TOTAL DE DESVIOS": "5",
+   "CRÍTICOS (RAC)": "0",
+   "ÍNDICE DESV/INSP": "3,7%",
+   "CONTRATADAS": "3",
+   "PROJETOS": "3"
+  },
+  "classif": {
+   "type": "DOUGHNUT (-4120)",
+   "cats": [
+    "Aberto",
+    "Fechado"
+   ],
+   "vals": [
+    3.0,
+    2.0
+   ]
+  },
+  "ddaily": {
+   "type": "AREA (1)",
+   "cats": [
+    "29/09",
+    "01/10",
+    "02/10"
+   ],
+   "vals": [
+    1.0,
+    2.0,
+    2.0
+   ]
+  },
+  "matriz": [
+   [
+    "CONTRATADA",
+    "PROJETOS",
+    "INSPEÇÕES",
+    "ITENS",
+    "DESVIOS",
+    "CRÍTICOS",
+    "DESV/INSP"
+   ],
+   [
+    "NÃO INFORMADO",
+    "4",
+    "5",
+    "106",
+    "1",
+    "0",
+    "20%"
+   ],
+   [
+    "CONTRATADA 09",
+    "5",
+    "27",
+    "1.065",
+    "2",
+    "0",
+    "7,4%"
+   ],
+   [
+    "CONTRATADA 08",
+    "4",
+    "47",
+    "3.856",
+    "2",
+    "0",
+    "4,3%"
+   ],
+   [
+    "CONTRATADA 11",
+    "1",
+    "10",
+    "410",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 10",
+    "1",
+    "15",
+    "393",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 14",
+    "1",
+    "4",
+    "164",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 12",
+    "3",
+    "8",
+    "291",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 13",
+    "1",
+    "5",
+    "1.180",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 15",
+    "1",
+    "3",
+    "102",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 03",
+    "2",
+    "5",
+    "1.206",
+    "0",
+    "0",
+    "0,0%"
+   ]
+  ],
+  "slides": [
+   7,
+   8,
+   9,
+   10,
+   11
+  ]
+ },
+ {
+  "name": "Bauru",
+  "kpi": {
+   "INSPEÇÕES": "98",
+   "INSPETORES": "13",
+   "CONTRATADAS": "6",
+   "PROJETOS": "9",
+   "ITENS VERIFICADOS": "3.571"
+  },
+  "part": {
+   "type": "DOUGHNUT (-4120)",
+   "cats": [
+    "CONTRATADA 08",
+    "CONTRATADA 16",
+    "CONTRATADA 15",
+    "CONTRATADA 03",
+    "NÃO INFORMADO",
+    "CONTRATADA 12"
+   ],
+   "vals": [
+    77.0,
+    6.0,
+    5.0,
+    5.0,
+    3.0,
+    2.0
+   ]
+  },
+  "daily": {
+   "type": "AREA (1)",
+   "cats": [
+    "28/09",
+    "29/09",
+    "30/09",
+    "01/10",
+    "02/10",
+    "03/10",
+    "04/10"
+   ],
+   "vals": [
+    21.0,
+    11.0,
+    10.0,
+    18.0,
+    25.0,
+    7.0,
+    6.0
+   ]
+  },
+  "proj": {
+   "type": "BAR_CLUSTERED (57)",
+   "cats": [
+    "SE EXEMPLO 28",
+    "SE EXEMPLO 29",
+    "SE EXEMPLO 30",
+    "SE EXEMPLO 31",
+    "SE EXEMPLO 32",
+    "SE EXEMPLO 33",
+    "SE EXEMPLO 34",
+    "SE EXEMPLO 35",
+    "SE EXEMPLO 36"
+   ],
+   "vals": [
+    1.0,
+    2.0,
+    5.0,
+    6.0,
+    6.0,
+    8.0,
+    9.0,
+    12.0,
+    49.0
+   ]
+  },
+  "dkpi": {
+   "TOTAL DE DESVIOS": "11",
+   "CRÍTICOS (RAC)": "0",
+   "ÍNDICE DESV/INSP": "11%",
+   "CONTRATADAS": "2",
+   "PROJETOS": "1"
+  },
+  "classif": {
+   "type": "DOUGHNUT (-4120)",
+   "cats": [
+    "Fechado",
+    "Aberto"
+   ],
+   "vals": [
+    9.0,
+    2.0
+   ]
+  },
+  "ddaily": {
+   "type": "AREA (1)",
+   "cats": [
+    "28/09",
+    "01/10",
+    "02/10",
+    "03/10"
+   ],
+   "vals": [
+    2.0,
+    2.0,
+    3.0,
+    4.0
+   ]
+  },
+  "matriz": [
+   [
+    "CONTRATADA",
+    "PROJETOS",
+    "INSPEÇÕES",
+    "ITENS",
+    "DESVIOS",
+    "CRÍTICOS",
+    "DESV/INSP"
+   ],
+   [
+    "NÃO INFORMADO",
+    "2",
+    "3",
+    "118",
+    "1",
+    "0",
+    "33%"
+   ],
+   [
+    "CONTRATADA 08",
+    "7",
+    "77",
+    "3.018",
+    "10",
+    "0",
+    "13%"
+   ],
+   [
+    "CONTRATADA 15",
+    "1",
+    "5",
+    "137",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 17",
+    "1",
+    "6",
+    "246",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 03",
+    "1",
+    "5",
+    "37",
+    "0",
+    "0",
+    "0,0%"
+   ]
+  ],
+  "slides": [
+   12,
+   13,
+   14,
+   15,
+   16
+  ]
+ },
+ {
+  "name": "Linhas De Transmissão",
+  "kpi": {
+   "INSPEÇÕES": "78",
+   "INSPETORES": "11",
+   "CONTRATADAS": "9",
+   "PROJETOS": "10",
+   "ITENS VERIFICADOS": "3.924"
+  },
+  "part": {
+   "type": "DOUGHNUT (-4120)",
+   "cats": [
+    "NÃO INFORMADO",
+    "CONTRATADA 18",
+    "CONTRATADA 19",
+    "CONTRATADA 20",
+    "CONTRATADA 21",
+    "CONTRATADA 22",
+    "CONTRATADA 12",
+    "CONTRATADA 23",
+    "Outras"
+   ],
+   "vals": [
+    19.0,
+    15.0,
+    12.0,
+    11.0,
+    9.0,
+    6.0,
+    2.0,
+    2.0,
+    2.0
+   ]
+  },
+  "daily": {
+   "type": "AREA (1)",
+   "cats": [
+    "28/09",
+    "29/09",
+    "30/09",
+    "01/10",
+    "02/10",
+    "03/10",
+    "04/10"
+   ],
+   "vals": [
+    10.0,
+    14.0,
+    14.0,
+    10.0,
+    13.0,
+    9.0,
+    8.0
+   ]
+  },
+  "proj": {
+   "type": "BAR_CLUSTERED (57)",
+   "cats": [
+    "SE EXEMPLO 37",
+    "SE EXEMPLO 38",
+    "SE EXEMPLO 39",
+    "SE EXEMPLO 40",
+    "SE EXEMPLO 41",
+    "SE EXEMPLO 42",
+    "SE EXEMPLO 43",
+    "SE EXEMPLO 44",
+    "SE EXEMPLO 45",
+    "SE EXEMPLO 46"
+   ],
+   "vals": [
+    1.0,
+    2.0,
+    2.0,
+    2.0,
+    4.0,
+    10.0,
+    10.0,
+    14.0,
+    14.0,
+    19.0
+   ]
+  },
+  "dkpi": {
+   "TOTAL DE DESVIOS": "1",
+   "CRÍTICOS (RAC)": "0",
+   "ÍNDICE DESV/INSP": "1,3%",
+   "CONTRATADAS": "1",
+   "PROJETOS": "1"
+  },
+  "classif": {
+   "type": "DOUGHNUT (-4120)",
+   "cats": [
+    "Aberto"
+   ],
+   "vals": [
+    1.0
+   ]
+  },
+  "ddaily": {
+   "type": "AREA (1)",
+   "cats": [
+    "01/10"
+   ],
+   "vals": [
+    1.0
+   ]
+  },
+  "matriz": [
+   [
+    "CONTRATADA",
+    "PROJETOS",
+    "INSPEÇÕES",
+    "ITENS",
+    "DESVIOS",
+    "CRÍTICOS",
+    "DESV/INSP"
+   ],
+   [
+    "NÃO INFORMADO",
+    "7",
+    "19",
+    "670",
+    "1",
+    "0",
+    "5,3%"
+   ],
+   [
+    "CONTRATADA 21",
+    "1",
+    "9",
+    "202",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 19",
+    "2",
+    "12",
+    "1.629",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 18",
+    "1",
+    "15",
+    "265",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 20",
+    "2",
+    "11",
+    "283",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 22",
+    "2",
+    "6",
+    "741",
+    "0",
+    "0",
+    "0,0%"
+   ]
+  ],
+  "slides": [
+   17,
+   18,
+   19,
+   20,
+   21
+  ]
+ },
+ {
+  "name": "Taubaté",
+  "kpi": {
+   "INSPEÇÕES": "42",
+   "INSPETORES": "5",
+   "CONTRATADAS": "4",
+   "PROJETOS": "3",
+   "ITENS VERIFICADOS": "3.356"
+  },
+  "part": {
+   "type": "DOUGHNUT (-4120)",
+   "cats": [
+    "CONTRATADA 08",
+    "CONTRATADA 24",
+    "CONTRATADA 25",
+    "NÃO INFORMADO"
+   ],
+   "vals": [
+    23.0,
+    9.0,
+    8.0,
+    2.0
+   ]
+  },
+  "daily": {
+   "type": "AREA (1)",
+   "cats": [
+    "28/09",
+    "29/09",
+    "30/09",
+    "01/10",
+    "02/10",
+    "03/10"
+   ],
+   "vals": [
+    7.0,
+    8.0,
+    7.0,
+    9.0,
+    8.0,
+    3.0
+   ]
+  },
+  "proj": {
+   "type": "BAR_CLUSTERED (57)",
+   "cats": [
+    "SE EXEMPLO 47",
+    "SE EXEMPLO 48",
+    "SE EXEMPLO 49"
+   ],
+   "vals": [
+    9.0,
+    14.0,
+    19.0
+   ]
+  },
+  "dkpi": {
+   "TOTAL DE DESVIOS": "1",
+   "CRÍTICOS (RAC)": "0",
+   "ÍNDICE DESV/INSP": "2,4%",
+   "CONTRATADAS": "1",
+   "PROJETOS": "1"
+  },
+  "classif": {
+   "type": "DOUGHNUT (-4120)",
+   "cats": [
+    "Fechado"
+   ],
+   "vals": [
+    1.0
+   ]
+  },
+  "ddaily": {
+   "type": "AREA (1)",
+   "cats": [
+    "28/09"
+   ],
+   "vals": [
+    1.0
+   ]
+  },
+  "matriz": [
+   [
+    "CONTRATADA",
+    "PROJETOS",
+    "INSPEÇÕES",
+    "ITENS",
+    "DESVIOS",
+    "CRÍTICOS",
+    "DESV/INSP"
+   ],
+   [
+    "CONTRATADA 08",
+    "2",
+    "23",
+    "3.007",
+    "1",
+    "0",
+    "4,3%"
+   ],
+   [
+    "CONTRATADA 24",
+    "1",
+    "9",
+    "77",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 25",
+    "1",
+    "8",
+    "208",
+    "0",
+    "0",
+    "0,0%"
+   ]
+  ],
+  "slides": [
+   22,
+   23,
+   24,
+   25,
+   26
+  ]
+ },
+ {
+  "name": "Baixada Santista",
+  "kpi": {
+   "INSPEÇÕES": "34",
+   "INSPETORES": "6",
+   "CONTRATADAS": "7",
+   "PROJETOS": "3",
+   "ITENS VERIFICADOS": "1.097"
+  },
+  "part": {
+   "type": "DOUGHNUT (-4120)",
+   "cats": [
+    "CONTRATADA 26",
+    "CONTRATADA 27",
+    "CONTRATADA 28",
+    "CONTRATADA 29",
+    "CONTRATADA 30",
+    "CONTRATADA 25",
+    "NÃO INFORMADO"
+   ],
+   "vals": [
+    20.0,
+    3.0,
+    3.0,
+    3.0,
+    2.0,
+    2.0,
+    1.0
+   ]
+  },
+  "daily": {
+   "type": "AREA (1)",
+   "cats": [
+    "28/09",
+    "29/09",
+    "30/09",
+    "01/10",
+    "02/10",
+    "03/10"
+   ],
+   "vals": [
+    7.0,
+    6.0,
+    5.0,
+    6.0,
+    5.0,
+    5.0
+   ]
+  },
+  "proj": {
+   "type": "BAR_CLUSTERED (57)",
+   "cats": [
+    "SE EXEMPLO 50",
+    "SE EXEMPLO 51",
+    "SE EXEMPLO 52"
+   ],
+   "vals": [
+    5.0,
+    9.0,
+    20.0
+   ]
+  },
+  "dkpi": {
+   "TOTAL DE DESVIOS": "8",
+   "CRÍTICOS (RAC)": "0",
+   "ÍNDICE DESV/INSP": "24%",
+   "CONTRATADAS": "2",
+   "PROJETOS": "2"
+  },
+  "classif": {
+   "type": "DOUGHNUT (-4120)",
+   "cats": [
+    "Aberto",
+    "Fechado"
+   ],
+   "vals": [
+    6.0,
+    2.0
+   ]
+  },
+  "ddaily": {
+   "type": "AREA (1)",
+   "cats": [
+    "29/09",
+    "30/09",
+    "01/10",
+    "02/10",
+    "03/10"
+   ],
+   "vals": [
+    1.0,
+    2.0,
+    2.0,
+    2.0,
+    1.0
+   ]
+  },
+  "matriz": [
+   [
+    "CONTRATADA",
+    "PROJETOS",
+    "INSPEÇÕES",
+    "ITENS",
+    "DESVIOS",
+    "CRÍTICOS",
+    "DESV/INSP"
+   ],
+   [
+    "CONTRATADA 29",
+    "1",
+    "3",
+    "46",
+    "4",
+    "0",
+    "133%"
+   ],
+   [
+    "CONTRATADA 31",
+    "1",
+    "3",
+    "79",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 26",
+    "1",
+    "20",
+    "741",
+    "0",
+    "0",
+    "0,0%"
+   ],
+   [
+    "CONTRATADA 28",
+    "2",
+    "3",
+    "95",
+    "0",
+    "0",
+    "0,0%"
+   ]
+  ],
+  "slides": [
+   27,
+   28,
+   29,
+   30,
+   31
+  ]
+ }
+]

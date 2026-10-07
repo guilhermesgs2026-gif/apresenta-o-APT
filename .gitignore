@@ -1,0 +1,10 @@
+# exports e vídeos do template Canva (conteúdo de terceiros)
+skills/apresentacao-noir-sgs/reference/canva-exemplo/*.mp4
+skills/apresentacao-noir-sgs/reference/canva-exemplo/*.pptx
+skills/apresentacao-noir-sgs/reference/canva-exemplo/sheet*.png
+# gerados
+__pycache__/
+*.pyc
+out_N*/
+shots_*/
+.edge_ud_*/
