@@ -1,4 +1,4 @@
-# Apresentação APT: skill `apresentacao-noir` para o Claude
+# Apresentação APT: skill `dorea-ppt` para o Claude
 
 Skill do Claude Code / Claude Desktop que cria ou **reestiliza apresentações PPTX editáveis** no estilo *noir editorial* do modelo Canva
 ["Apresentação Preta de Relatório de Estratégias Digitais Estilo Moderno Elegante"](https://www.canva.com/pt_br/modelos/EAGp1QwF4ko-apresentacao-preta-de-relatorio-de-estrategias-digitais-estilo-moderno-elegante/).
@@ -34,24 +34,24 @@ O instalador:
 2. instala as bibliotecas Python (`Pillow numpy python-pptx lxml fonttools markitdown`);
 3. instala a skill **ppt-master** ([hugohe3/ppt-master](https://github.com/hugohe3/ppt-master), MIT) e roda a checagem de integridade dela;
 4. instala o **agent-reach** + Exa ([Panniantong/agent-reach](https://github.com/Panniantong/agent-reach), MIT) para pesquisa na web (`-SkipAgentReach` / `--skip-agent-reach` pula);
-5. copia a skill `apresentacao-noir` para `~/.claude/skills/`;
+5. copia a skill `dorea-ppt` para `~/.claude/skills/`;
 6. avisa o que falta (ffmpeg, Edge).
 
 **Manual (uma vez):** no app do Claude, conecte os conectores **Canva** e **Figma** (Configurações → Conectores). O Canva gera os objetos 3D novos; o Figma só é usado se você autorizar (gasta créditos).
 
 ## Uso
 Abra uma sessão nova e escreva:
-> /apresentacao-noir faz uma apresentação sobre vendas de carro do 3º trimestre
+> /dorea-ppt faz uma apresentação sobre vendas de carro do 3º trimestre
 
 ou
-> /apresentacao-noir deixa esta apresentação nesse estilo: C:\...\minha.pptx
+> /dorea-ppt deixa esta apresentação nesse estilo: C:\...\minha.pptx
 
 O Claude conduz: pede o logo e o que faltar, monta o `deck.json`, gera as prévias, roda o pipeline e entrega em `<pasta>\entrega\<nome>.pptx`.
 
 ## Estrutura do repositório
 ```
 installer/                       install.ps1 e install.sh (instalam dependências + skill)
-skills/apresentacao-noir/
+skills/dorea-ppt/
   SKILL.md                       instruções que o Claude segue (entrevista, esquema, design, animações, QA)
   scripts/
     noir_build.py / noir_lib.py  deck.json -> SVGs no estilo noir (capa, divisor, conteúdo, fechamento)
@@ -69,7 +69,7 @@ skills/apresentacao-noir/
 
 ## Exemplo do Canva (base de estilo)
 A skill sempre se baseia no modelo do Canva: [link do template](https://www.canva.com/pt_br/modelos/EAGp1QwF4ko-apresentacao-preta-de-relatorio-de-estrategias-digitais-estilo-moderno-elegante/)
-e na análise em `skills/apresentacao-noir/reference/ESTILO_CANVA.md` (fontes, tamanhos, opacidade do objeto, tempos de animação medidos quadro a quadro).
+e na análise em `skills/dorea-ppt/reference/ESTILO_CANVA.md` (fontes, tamanhos, opacidade do objeto, tempos de animação medidos quadro a quadro).
 Os exports (`.mp4`/`.pptx`) do template **não estão neste repositório público**, por serem conteúdo do Canva; recrie-os com o conector Canva (instruções em `reference/canva-exemplo/README.md`).
 
 ## Avisos

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Instalador da skill "apresentacao-noir" + dependências (macOS / Linux / Git Bash)
+# Instalador da skill "dorea-ppt" + dependências (macOS / Linux / Git Bash)
 # Uso (na raiz do repositório):  bash installer/install.sh [--skip-agent-reach] [--force]
 set -euo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -30,8 +30,8 @@ else
   if command -v npm >/dev/null; then npm install -g mcporter && mcporter config add exa https://mcp.exa.ai/mcp --scope home
   else echo "AVISO: instale o Node.js e rode: npm i -g mcporter && mcporter config add exa https://mcp.exa.ai/mcp --scope home"; fi
 fi
-echo "==> 5/6 Instalando a skill apresentacao-noir"
-rm -rf "$SKILLS/apresentacao-noir"; cp -r "$REPO/skills/apresentacao-noir" "$SKILLS/"
+echo "==> 5/6 Instalando a skill dorea-ppt"
+rm -rf "$SKILLS/dorea-ppt"; cp -r "$REPO/skills/dorea-ppt" "$SKILLS/"
 echo "==> 6/6 Verificações opcionais"
 command -v ffmpeg >/dev/null || echo "AVISO: ffmpeg ausente (só para reanalisar o vídeo do exemplo Canva)."
-echo; echo "Pronto. Conecte os conectores Canva e Figma no app do Claude e use:  /apresentacao-noir"
+echo; echo "Pronto. Conecte os conectores Canva e Figma no app do Claude e use:  /dorea-ppt"

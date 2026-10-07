@@ -1,7 +1,7 @@
 # exports e vídeos do template Canva (conteúdo de terceiros)
-skills/apresentacao-noir/reference/canva-exemplo/*.mp4
-skills/apresentacao-noir/reference/canva-exemplo/*.pptx
-skills/apresentacao-noir/reference/canva-exemplo/sheet*.png
+skills/dorea-ppt/reference/canva-exemplo/*.mp4
+skills/dorea-ppt/reference/canva-exemplo/*.pptx
+skills/dorea-ppt/reference/canva-exemplo/sheet*.png
 # gerados
 __pycache__/
 *.pyc

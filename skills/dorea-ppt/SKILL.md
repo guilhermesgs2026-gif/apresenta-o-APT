@@ -1,6 +1,6 @@
 ---
-name: apresentacao-noir
-description: Cria ou reestiliza apresentações PPTX editáveis no estilo "noir editorial" do modelo Canva do Guilherme (fundo preto, títulos entre parênteses, objetos 3D cromados parados atrás do título, fontes Open Sauce e Space Mono embutidas, gráficos de linha fina, animações rápidas de ~1,3 s). Serve para QUALQUER assunto (vendas, marketing, relatórios, projetos). Use quando o usuário pedir uma apresentação "no estilo Canva preto / noir / igual ao exemplo", disser "usa a skill apresentacao-noir", pedir "faz uma apresentação sobre X com esse estilo" ou enviar um PPTX para "deixar nesse estilo". Pede o logo, gera objetos 3D do tema pelo Canva e entrega PPTX nativo validado.
+name: dorea-ppt
+description: Cria ou reestiliza apresentações PPTX editáveis no estilo "noir editorial" do modelo Canva do Guilherme (fundo preto, títulos entre parênteses, objetos 3D cromados parados atrás do título, fontes Open Sauce e Space Mono embutidas, gráficos de linha fina, animações rápidas de ~1,3 s). Serve para QUALQUER assunto (vendas, marketing, relatórios, projetos). Use quando o usuário pedir uma apresentação "no estilo Canva preto / noir / igual ao exemplo", disser "/dorea-ppt" ou "usa a skill dorea-ppt", pedir "faz uma apresentação sobre X com esse estilo" ou enviar um PPTX para "deixar nesse estilo". Pede o logo, gera objetos 3D do tema pelo Canva e entrega PPTX nativo validado.
 ---
 
 # Apresentação Noir (qualquer assunto)
