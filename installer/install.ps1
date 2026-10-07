@@ -1,4 +1,4 @@
-# Instalador da skill "apresentacao-noir-sgs" + todas as dependências (Windows / PowerShell)
+# Instalador da skill "apresentacao-noir" + todas as dependências (Windows / PowerShell)
 # Uso (na raiz do repositório):  powershell -ExecutionPolicy Bypass -File installer\install.ps1
 # Opções: -SkipAgentReach (não instala pesquisa web) | -Force (reinstala ppt-master mesmo se já existir)
 param([switch]$SkipAgentReach,[switch]$Force)
@@ -45,10 +45,10 @@ else {
   } else { Write-Warning "npm não encontrado: instale o Node.js e rode 'npm i -g mcporter' + 'mcporter config add exa https://mcp.exa.ai/mcp --scope home' para a busca semântica." }
 }
 
-Write-Host "==> 5/6 Instalando a skill apresentacao-noir-sgs" -ForegroundColor Cyan
-$dst = Join-Path $skills "apresentacao-noir-sgs"
+Write-Host "==> 5/6 Instalando a skill apresentacao-noir" -ForegroundColor Cyan
+$dst = Join-Path $skills "apresentacao-noir"
 if(Test-Path $dst){ Remove-Item -Recurse -Force $dst }
-Copy-Item -Recurse (Join-Path $repo "skills\apresentacao-noir-sgs") $dst
+Copy-Item -Recurse (Join-Path $repo "skills\apresentacao-noir") $dst
 
 Write-Host "==> 6/6 Verificações opcionais" -ForegroundColor Cyan
 if(-not (Get-Command ffmpeg -ErrorAction SilentlyContinue)){ Write-Warning "ffmpeg não encontrado (só necessário para reanalisar o vídeo do exemplo Canva): winget install Gyan.FFmpeg" }
@@ -57,4 +57,4 @@ if(-not (Test-Path $edge)){ Write-Warning "Microsoft Edge não encontrado em $ed
 
 Write-Host ""
 Write-Host "Pronto. Falta só conectar, no app do Claude, os conectores Canva e Figma (Configurações > Conectores)." -ForegroundColor Green
-Write-Host "Depois abra uma nova sessão e use:  /apresentacao-noir-sgs"
+Write-Host "Depois abra uma nova sessão e use:  /apresentacao-noir"

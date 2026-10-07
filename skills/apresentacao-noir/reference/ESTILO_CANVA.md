@@ -19,7 +19,7 @@ Sempre que for criar ou revisar uma apresentação, **comparar com estes arquivo
 | Legenda sobre o título (REDES SOCIAIS) | Open Sauce, espaçamento ≈0,8 em | 20,9 pt | ≈18 px |
 | Título de slide de dados "(VISÃO GERAL)" | Open Sauce | 68,2 pt | ≈45 px |
 | Textos pequenos, parágrafos, rótulos, dados | Space Mono, MAIÚSCULO | 13,9 pt | ≈12 px |
-| Logo do exemplo | Helios Extended | 26,4 pt | (não usado: logo é da SGS) |
+| Logo do exemplo | Helios Extended | 26,4 pt | (não usado: use o logo do cliente) |
 
 ## Cores
 Fundo preto puro `#000000`; texto `#E8ECEC` / `#FFFFFF`; objeto 3D com **opacidade 0,62** atrás do título; gráficos em linhas brancas finas com pontos; sem cartões nem caixas.

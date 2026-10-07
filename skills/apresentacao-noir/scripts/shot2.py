@@ -1,4 +1,4 @@
-import sys,subprocess,os,glob,re
+import sys,subprocess,os,glob,re,tempfile
 src=os.path.abspath(sys.argv[1]); dst=os.path.abspath(sys.argv[2]); os.makedirs(dst,exist_ok=True)
 FD=os.path.abspath(os.path.join(os.path.dirname(__file__),"..","assets","fonts")).replace("\\","/")
 css=f"""@font-face{{font-family:'Open Sauce';src:url('file:///{FD}/OpenSauce-Regular.ttf')}}
@@ -13,7 +13,7 @@ for f in sorted(glob.glob(os.path.join(src,"*.svg"))):
     t=open(f,encoding="utf-8").read(); t=re.sub(r"^<\?xml.*?\?>","",t)
     html=os.path.join(src,"_p_"+b.replace(".svg",".html"))
     open(html,"w",encoding="utf-8").write(f"<!doctype html><meta charset='utf-8'><style>{css}</style>{t}")
-    out=os.path.join(dst,b.replace(".svg",".png")); ud=os.path.abspath("../.edge_ud_"+b)
+    out=os.path.join(dst,b.replace(".svg",".png")); ud=os.path.join(tempfile.gettempdir(),"edge_ud_"+b)
     try: subprocess.run([edge,"--user-data-dir="+ud,"--headless","--disable-gpu","--hide-scrollbars","--window-size=1280,720","--virtual-time-budget=3000",f"--screenshot={out}","file:///"+html.replace("\\","/")],capture_output=True,timeout=45)
     except Exception as e: print("timeout",b)
     print(out,os.path.exists(out))

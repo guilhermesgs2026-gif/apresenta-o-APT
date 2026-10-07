@@ -1,0 +1,9 @@
+{
+ "torre-transmissao": 0.522,
+ "transformador": 0.842,
+ "disjuntor": 0.792,
+ "isoladores": 1.1995,
+ "capacete": 1.2788,
+ "carro": 2.5362,
+ "roda": 0.9529
+}

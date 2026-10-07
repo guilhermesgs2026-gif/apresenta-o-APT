@@ -1,7 +1,7 @@
 # exports e vídeos do template Canva (conteúdo de terceiros)
-skills/apresentacao-noir-sgs/reference/canva-exemplo/*.mp4
-skills/apresentacao-noir-sgs/reference/canva-exemplo/*.pptx
-skills/apresentacao-noir-sgs/reference/canva-exemplo/sheet*.png
+skills/apresentacao-noir/reference/canva-exemplo/*.mp4
+skills/apresentacao-noir/reference/canva-exemplo/*.pptx
+skills/apresentacao-noir/reference/canva-exemplo/sheet*.png
 # gerados
 __pycache__/
 *.pyc
